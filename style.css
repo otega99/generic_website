@@ -56,6 +56,7 @@ header {
   top: 0%;
   width: 100vw;
   padding: 1em;
+  z-index: 2;
   position: fixed;
   background: var(--background);
 }
@@ -122,22 +123,7 @@ header a {
     url("./images/hero.jpg");
   background-size: 100% 120%;
 }
-.dark {
-  background: var(--dark);
-  flex-direction: row-reverse;
-}
-.dark a {
-  color: black;
-}
-.dark p,
-.dark h1 {
-  color: var(--light);
-}
-.light a {
-  color: var(--dark);
-}
 section {
-  z-index: -1;
   padding: 4em 2em;
   position: relative;
   justify-content: center;
@@ -147,7 +133,8 @@ section {
   padding: 0 1.5em;
 }
 .section-img {
-  height: 600px;
+  width: 45%;
+  height: 500px;
 }
 .section-text {
   line-height: 1.5;
@@ -157,11 +144,40 @@ section {
 }
 .section-text p,
 .section-text a {
+  font-weight: 500;
   font-size: 1.5rem;
 }
+.dark {
+  background: var(--dark);
+  flex-direction: row-reverse;
+}
+.dark a,
+.dark h1 {
+  color: var(--light);
+}
+.dark a {
+  background: linear-gradient(var(--light), var(--light));
+}
+.dark p {
+  color: black;
+}
+.light a,
+.light h1 {
+  color: var(--dark);
+}
+.light a {
+  background: linear-gradient(var(--dark), var(--dark));
+}
+.light a:hover,
+.dark a:hover {
+  background-size: 100% 3px;
+}
 .section-text a {
-  font-weight: 500;
   text-decoration: none;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  background-size: 0% 3px;
+  transition: background-size 400ms ease-in;
 }
 .left,
 .right {
@@ -184,7 +200,7 @@ section {
   --inverse-text: #f4f4f4;
   --background: #f4f4f4;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and (min-width: 601px) {
   .nav-list {
     flex-basis: 45%;
     margin-left: 2em;
